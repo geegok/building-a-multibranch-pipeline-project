@@ -58,7 +58,7 @@ pipeline {
 //                        -Dsonar.branch.target=master
 //                    '''
                     sh '''
-                    ${scannHome}/bin/sonar-scanner \
+                    ${scannerHome}/bin/sonar-scanner \
                         -Dsonar.pullrequest.base=master
                         -Dsonar.pullrequest.branch=${GIT_BRANCH}
                         -Dsonar.pullrequest.key=3
