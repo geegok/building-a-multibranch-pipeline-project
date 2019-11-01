@@ -58,6 +58,8 @@ pipeline {
 //                        -Dsonar.branch.target=master
 //                    '''
                     sh '''
+                    . ~/.nvm/nvm.sh
+                    nvm use $NODE_VERSION
                     ${scannerHome}/bin/sonar-scanner \
                         -Dsonar.projectName=${GIT_URL##*/} \
                         -Dsonar.projectKey=${GIT_URL##*/} \
