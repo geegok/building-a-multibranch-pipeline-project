@@ -50,12 +50,18 @@ pipeline {
             when { not { branch 'master' } }
             steps {
                 withSonarQubeEnv('SonarQube') {
+//                    sh '''
+//                    ${scannerHome}/bin/sonar-scanner \
+//                        -Dsonar.projectName=${GIT_URL##*/} \
+//                        -Dsonar.projectKey=${GIT_URL##*/} \
+//                        -Dsonar.branch.name=${GIT_BRANCH} \
+//                        -Dsonar.branch.target=master
+//                    '''
                     sh '''
-                    ${scannerHome}/bin/sonar-scanner \
-                        -Dsonar.projectName=${GIT_URL##*/} \
-                        -Dsonar.projectKey=${GIT_URL##*/} \
-                        -Dsonar.branch.name=${GIT_BRANCH} \
-                        -Dsonar.branch.target=master
+                    ${scannHome}/bin/sonar-scanner \
+                        -Dsonar.pullrequest.base=master
+                        -Dsonar.pullrequest.branch=${GIT_BRANCH}
+                        -Dsonar.pullrequest.key=3
                     '''
                 }
             }
