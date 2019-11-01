@@ -54,7 +54,8 @@ pipeline {
                     ${scannerHome}/bin/sonar-scanner \
                         -Dsonar.projectName=${GIT_URL##*/} \
                         -Dsonar.projectKey=${GIT_URL##*/} \
-                        -Dsonar.branch.name=${GIT_BRANCH}
+                        -Dsonar.branch.name=${GIT_BRANCH} \
+                        -Dsonar.branch.target=master
                     '''
                 }
             }
