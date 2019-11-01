@@ -59,9 +59,11 @@ pipeline {
 //                    '''
                     sh '''
                     ${scannerHome}/bin/sonar-scanner \
-                        -Dsonar.pullrequest.base=master
-                        -Dsonar.pullrequest.branch=${GIT_BRANCH}
-                        -Dsonar.pullrequest.key=3
+                        -Dsonar.projectName=${GIT_URL##*/} \
+                        -Dsonar.projectKey=${GIT_URL##*/} \
+                        -Dsonar.pullrequest.base=master \
+                        -Dsonar.pullrequest.branch=${GIT_BRANCH} \
+                        -Dsonar.pullrequest.key=3 \
                     '''
                 }
             }
